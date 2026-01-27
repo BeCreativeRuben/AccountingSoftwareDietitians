@@ -25,10 +25,12 @@ In the Vercel project settings, add these environment variables:
 **Required Variables:**
 
 ```
-NEXT_PUBLIC_SUPABASE_URL=https://izrveopabsoypqrnyqnf.supabase.co
-NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Iml6cnZlb3BhYnNveXBxcm55cW5mIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njk1MTI3MjgsImV4cCI6MjA4NTA4ODcyOH0.fwS_NaaaN3Y8AcezDw-rdoiRkHj9i7T7IuAKqZqiHr0
-SUPABASE_SERVICE_ROLE_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Iml6cnZlb3BhYnNveXBxcm55cW5mIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc2OTUxMjcyOCwiZXhwIjoyMDg1MDg4NzI4fQ.nLQ6uiwzwqsp5RPiSxLYYibW5Zz3FbNrnuKUg_m2u9Y
+NEXT_PUBLIC_SUPABASE_URL=your-supabase-project-url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your-supabase-anon-key
+SUPABASE_SERVICE_ROLE_KEY=your-supabase-service-role-key
 ```
+
+**Note:** Get these values from your Supabase project settings (Settings → API)
 
 **Optional Variables (for future features):**
 
