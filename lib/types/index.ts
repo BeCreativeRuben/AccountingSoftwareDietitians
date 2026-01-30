@@ -98,6 +98,7 @@ export interface CreateClientRequest {
   insuranceNumber?: string;
   medicalConditions?: SolidarisMedicalCondition[];
   notes?: string;
+  importSource?: 'manual' | 'csv_import';
 }
 
 // ============================================================================

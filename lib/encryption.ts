@@ -95,6 +95,29 @@ export function encryptFields(
 }
 
 /**
+ * Derive server-side encryption key for a user
+ * Uses ENCRYPTION_SECRET + userId + salt (for MVP - avoids needing user password on each request)
+ */
+export function deriveServerEncryptionKey(
+  userId: string,
+  salt: string,
+  secret: string = process.env.ENCRYPTION_SECRET || process.env.SUPABASE_SERVICE_ROLE_KEY || 'fallback-dev-secret'
+): Uint8Array {
+  const combined = `${secret}:${userId}:${salt}`;
+  const saltBuffer = Buffer.from(salt, 'hex').length >= 16 
+    ? Buffer.from(salt, 'hex') 
+    : Buffer.from(salt.padEnd(32, '0').slice(0, 32));
+  const key = pbkdf2Sync(
+    combined,
+    saltBuffer,
+    PBKDF2_ITERATIONS,
+    KEY_LENGTH,
+    'sha256'
+  );
+  return new Uint8Array(key);
+}
+
+/**
  * Decrypt multiple fields at once
  */
 export function decryptFields(

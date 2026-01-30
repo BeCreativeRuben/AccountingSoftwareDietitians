@@ -80,6 +80,22 @@ export async function createUser(request: SignupRequest): Promise<{ user: User; 
       default_appointment_duration_minutes: 60,
       client_data_retention_months: 6,
     });
+
+  // Create default appointment types
+  const defaultTypes = [
+    { name: 'Eerste Consultatie', price: 75, duration_minutes: 60 },
+    { name: 'Vervolgconsultatie', price: 50, duration_minutes: 45 },
+    { name: 'Telefonisch Advies', price: 25, duration_minutes: 30 },
+  ];
+  for (const t of defaultTypes) {
+    await supabaseAdmin.from('appointment_types').insert({
+      user_id: authData.user.id,
+      name: t.name,
+      price: t.price,
+      duration_minutes: t.duration_minutes,
+      is_custom: false,
+    });
+  }
   
   return {
     user: {
